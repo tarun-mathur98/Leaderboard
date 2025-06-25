@@ -5,7 +5,8 @@ import ScoreForm from "./components/ScoreForm";
 import Leaderboard from "./components/Leaderboard";
 import axios from "axios";
 
-const socket = io("http://localhost:5000"); // backend port
+// const socket = io("http://localhost:5000"); // backend port
+const socket = io("https://leaderboard-backend-ab7r.onrender.com"); // backend port
 
 const REGION_OPTIONS = [
   { value: "india", label: "India" },
@@ -27,7 +28,7 @@ function App() {
   const fetchLeaderboard = useCallback(async (region, mode) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/leaderboard/${region}/${mode}/top/10`
+        `https://leaderboard-backend-ab7r.onrender.com/api/leaderboard/${region}/${mode}/top/10`
       );
       setPlayers(res.data);
     } catch (err) {
